@@ -1,10 +1,10 @@
 """
 main.py
 """
-import argparse
 from pathlib import Path
-import yaml
 from process_livedoor_news import process_livedoor_news
+from load_yaml import load_yaml
+from parse_args import parse_args
 
 PROJECT_CONFIG_PATH = Path("../../configs/project.yaml")
 
@@ -13,39 +13,11 @@ process_dataset_func = {
     "livedoor_news": process_livedoor_news
 }
 
-def parse_args():
-    """
-    Parse command-line arguments.
-
-    Returns:
-        argparse.Namespace: An object containing parsed arguments.
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--project-config-path", default=PROJECT_CONFIG_PATH,
-                        type=Path, help="Path to the project configuration file.")
-    parser.add_argument("-c", "--config-path", required=True,
-                        type=Path, help="Path to the configuration file.")
-    return parser.parse_args()
-
-def load_yaml(file_path):
-    """
-    Load YAML data from a file.
-
-    Args:
-        file_path (Path): Path to the YAML file.
-
-    Returns:
-        dict: A dictionary containing the loaded data.
-    """
-    with file_path.open("r") as yaml_file:
-        data = yaml.load(yaml_file, Loader=yaml.FullLoader)
-    return data
-
 def main():
     """
     Main function for preprocessing a specified dataset
     """
-    args = parse_args()
+    args = parse_args(PROJECT_CONFIG_PATH)
 
     # Load a project configuration file
     if not args.project_config_path.exists():
@@ -72,6 +44,7 @@ def main():
 
     # Output directory path for the processed data
     processed_dir = Path(PROJECT_CONFIG_PATH.parent) / dataset_config["processed_dir"]
+    processed_dir.mkdir(parents=True)
 
     # Export the class list to a text file
     class_li = "\n".join(class_li)
