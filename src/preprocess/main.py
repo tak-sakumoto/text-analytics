@@ -44,7 +44,7 @@ def main():
 
     # Output directory path for the processed data
     processed_dir = Path(PROJECT_CONFIG_PATH.parent) / dataset_config["processed_dir"]
-    processed_dir.mkdir(parents=True)
+    processed_dir.mkdir(parents=True, exist_ok=True)
 
     # Export the class list to a text file
     class_li = "\n".join(class_li)
@@ -54,7 +54,6 @@ def main():
 
     # Export the dataframe to a CSV file
     csv_path = processed_dir / dataset_config["processed_csv_name"]
-
     text_df.to_csv(csv_path, index=False)
 
 if __name__ == "__main__":
