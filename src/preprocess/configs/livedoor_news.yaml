@@ -1,1 +1,2 @@
 dataset_name: livedoor_news
+tokenize: true
