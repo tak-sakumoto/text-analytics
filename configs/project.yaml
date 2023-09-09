@@ -6,7 +6,15 @@ project:
 datasets:
   livedoor_news:
     dir: ../datasets/livedoor_news
+    url: https://www.rondhuit.com/download/ldcc-20140209.tar.gz
+    download_dir: ../datasets/livedoor_news/raw
     origin_dir: ../datasets/livedoor_news/raw/text
     processed_dir: ../datasets/livedoor_news/processed
     processed_csv_name: processed.csv
     class_label: labels.txt
+
+stopwords:
+  dir: ../stopwords
+  download_dir: ../stopwords
+  url: http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt
+  
