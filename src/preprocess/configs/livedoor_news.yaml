@@ -1,2 +1,3 @@
 dataset_name: livedoor_news
 tokenize: true
+remove_stopwords: true

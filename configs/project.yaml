@@ -15,6 +15,7 @@ datasets:
 
 stopwords:
   dir: ../stopwords
+  file_name: Japanese.txt
   download_dir: ../stopwords
   url: http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt
   
