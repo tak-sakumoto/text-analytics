@@ -6,6 +6,7 @@ from process_livedoor_news import process_livedoor_news
 from load_yaml import load_yaml
 from parse_args import parse_args
 from tokenize_df_text import tokenize_df_text
+from remove_stopwords import remove_stopwords
 
 PROJECT_CONFIG_PATH = Path("../../configs/project.yaml")
 
@@ -46,6 +47,10 @@ def main():
     # Tokenize
     if config["tokenize"]:
         tokenize_df_text(text_df)
+
+    # Remove stopwords
+    if config["tokenize"] and config["remove_stopwords"]:
+        remove_stopwords(text_df, PROJECT_CONFIG_PATH.parent, project_config)
 
     # Output directory path for the processed data
     processed_dir = Path(PROJECT_CONFIG_PATH.parent) / dataset_config["processed_dir"]
