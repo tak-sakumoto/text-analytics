@@ -1,7 +1,7 @@
 """
 remove_stopwords.py
 """
-from read_file_lines import read_file_lines
+from utils.read_file_lines import read_file_lines
 
 def remove_stopwords(text_df, project_config_parent, project_config):
     """

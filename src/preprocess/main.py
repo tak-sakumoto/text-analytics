@@ -3,7 +3,7 @@ main.py
 """
 from pathlib import Path
 from process_livedoor_news import process_livedoor_news
-from load_yaml import load_yaml
+from utils.load_yaml import load_yaml
 from parse_args import parse_args
 from tokenize_df_text import tokenize_df_text
 from remove_stopwords import remove_stopwords

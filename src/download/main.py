@@ -3,8 +3,8 @@ main.py
 """
 from pathlib import Path
 from parse_args import parse_args
-from load_yaml import load_yaml
-from download_file import download_file
+from utils.load_yaml import load_yaml
+from utils.download_file import download_file
 
 PROJECT_CONFIG_PATH = Path("../../configs/project.yaml")
 PROJECT_CONFIG_DIR = PROJECT_CONFIG_PATH.parent
