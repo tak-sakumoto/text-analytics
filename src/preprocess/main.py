@@ -9,6 +9,7 @@ from tokenize_df_text import tokenize_df_text
 from remove_stopwords import remove_stopwords
 
 PROJECT_CONFIG_PATH = Path("../../configs/project.yaml")
+PROJECT_CONFIG_DIR = PROJECT_CONFIG_PATH.parent
 
 # Dictionary of Functions for processing a specified dataset
 process_dataset_func = {
@@ -40,7 +41,7 @@ def main():
         return
 
     class_li, text_df =\
-        process_dataset_func[dataset_name](PROJECT_CONFIG_PATH.parent, project_config, config)
+        process_dataset_func[dataset_name](PROJECT_CONFIG_DIR, project_config, config)
 
     dataset_config = project_config["datasets"][config["dataset_name"]]
 
@@ -50,10 +51,10 @@ def main():
 
     # Remove stopwords
     if config["tokenize"] and config["remove_stopwords"]:
-        remove_stopwords(text_df, PROJECT_CONFIG_PATH.parent, project_config)
+        remove_stopwords(text_df, PROJECT_CONFIG_DIR, project_config)
 
     # Output directory path for the processed data
-    processed_dir = Path(PROJECT_CONFIG_PATH.parent) / dataset_config["processed_dir"]
+    processed_dir = PROJECT_CONFIG_DIR / dataset_config["processed_dir"]
     processed_dir.mkdir(parents=True, exist_ok=True)
 
     # Export the class list to a text file

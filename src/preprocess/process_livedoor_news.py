@@ -21,7 +21,7 @@ def process_livedoor_news(project_config_parent, project_config, config):
         text_df: Pandas dataframe of the dataset
     """
     dataset_config = project_config["datasets"][config["dataset_name"]]
-    origin_dir = Path(project_config_parent) / dataset_config["origin_dir"]
+    origin_dir = project_config_parent / dataset_config["origin_dir"]
     class_li = [dir_path.name for dir_path in origin_dir.glob("*") if dir_path.is_dir()]
 
     # Make a pairs list of text and class label
